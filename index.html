@@ -96,23 +96,31 @@ body {
 .topnav {
   background: var(--topnav-bg);
   border-bottom: 3px solid var(--brand);
-  padding: 0 24px;
-  height: 54px;
+  padding: 0 16px;
+  min-height: 54px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky; top:0; z-index:200;
+  flex-wrap: nowrap;
+  gap: 8px;
 }
-.topnav .brand { display:flex; align-items:center; gap:14px; }
-.topnav .oracle-logo { color:var(--brand); font-size:20px; font-weight:800; letter-spacing:-.5px; }
-.topnav .sep { color:rgba(255,255,255,0.2); font-size:18px; }
-.topnav .app-name { color:#e8ecf4; font-size:13px; font-weight:600; }
+.topnav .brand { display:flex; align-items:center; gap:8px; min-width:0; flex-shrink:1; overflow:hidden; }
+.topnav .oracle-logo { color:var(--brand); font-size:20px; font-weight:800; letter-spacing:-.5px; flex-shrink:0; }
+.topnav .sep { color:rgba(255,255,255,0.2); font-size:18px; flex-shrink:0; }
+.topnav .app-name { color:#e8ecf4; font-size:12px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .topnav .app-sub  { color:rgba(255,255,255,0.4); font-size:11px; margin-left:2px; }
-.topnav .controls { display:flex; align-items:center; gap:10px; }
+.topnav .controls { display:flex; align-items:center; gap:6px; flex-shrink:0; }
 .topnav .pill {
   background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
-  padding:4px 12px; border-radius:20px; font-size:11px; color:rgba(255,255,255,0.7);
-  display:flex; align-items:center; gap:6px;
+  padding:4px 8px; border-radius:20px; font-size:10px; color:rgba(255,255,255,0.7);
+  display:flex; align-items:center; gap:4px; white-space:nowrap;
+}
+/* Hide pills on very small screens */
+@media(max-width:480px) {
+  .topnav .pill { display:none; }
+  .topnav .app-name { font-size:11px; }
 }
 .dot { width:7px;height:7px;border-radius:50%;animation:pulse 2s infinite; }
 .dot.green { background:var(--accent-green); }
@@ -407,9 +415,18 @@ body {
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:768px){
-  .main { padding:16px; }
+  .main { padding:12px; }
   .mod-grid,.week-grid,.ai-grid,.spec-grid { grid-template-columns:1fr; }
   .arch-row { flex-direction:column;align-items:center; }
+  .topnav { padding:0 12px; }
+  .tab-btn { padding:10px 10px; font-size:11px; gap:4px; }
+  .tab-btn .ico { font-size:13px; }
+  .sec-hdr h2 { font-size:16px; }
+  .card { padding:16px; }
+  .spec-grid { grid-template-columns:1fr; }
+  .week-grid { grid-template-columns:1fr; }
+  .modules-grid { grid-template-columns:repeat(2,1fr); }
+  .btn-ctrl { padding:4px 8px; font-size:12px; }
 }
 @media print {
   .topnav,.tab-container { display:none; }
