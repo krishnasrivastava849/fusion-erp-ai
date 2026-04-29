@@ -435,7 +435,6 @@ body {
 .footer a { color:var(--brand);text-decoration:none; }
 
 /* ═══ RESPONSIVE ═══ */
-/* ═══ MOBILE RESPONSIVE — FULL OVERHAUL ═══ */
 @media(max-width:768px){
   .main { padding:12px 10px; }
   .mod-grid { grid-template-columns:1fr; gap:10px; }
@@ -474,22 +473,17 @@ body {
   .cmp-table thead th { padding:8px 10px; }
   .cmp-table tbody td { padding:8px 10px; font-size:11px; }
   .footer    { font-size:10px; padding:20px 0 12px; }
-
-  /* Flow steps on mobile */
   .flow { gap:1px; }
   .fstep-num { width:28px; height:28px; font-size:12px; }
   .fstep-conn { height:16px; }
-
-  /* Architecture diagram */
   .arch-canvas { padding:16px 10px; }
   .arch-arrow { font-size:16px; }
-
-  /* P2P O2C grid - stack on mobile */
+  /* Stack all 2-col grids on mobile */
   div[style*="grid-template-columns:1fr 1fr"] {
     display:block !important;
   }
   div[style*="grid-template-columns:1fr 1fr"] .card {
-    margin-bottom:12px;
+    margin-bottom:12px !important;
   }
 }
 
@@ -1193,8 +1187,44 @@ body {
     </div>
   </div>
 
+  <!-- CM Overview info box -->
+  <div class="info">
+    <strong>🏦 Oracle Fusion Cash Management</strong> provides real-time visibility into corporate liquidity, enabling efficient bank account management, automated bank statement reconciliation, and accurate cash forecasting. It supports bank statement processing, intragroup transfers, and cash positioning, allowing treasury teams to optimize working capital and manage risk — available within the Oracle Financials Cloud suite.
+  </div>
+
+  <!-- 2-column: Key Components + AI Agent Studio side by side -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+
+    <!-- LEFT: Key Components -->
+    <div class="card" style="margin-bottom:0;border-top:4px solid var(--mod-cm);">
+      <div class="card-title"><span class="ico">💰</span>Cash Flow — Key Components & Features</div>
+      <ul class="topic-list">
+        <li><span class="ico">🏦</span><div><strong>Bank Account Reconciliation</strong> — Auto or manual reconciliation of bank statements with system transactions, including bank charges and interest.</div></li>
+        <li><span class="ico">📈</span><div><strong>Cash Positioning & Forecasting</strong> — Daily cash positions across multiple bank accounts; predict future balances and monitor cash flow trends.</div></li>
+        <li><span class="ico">📄</span><div><strong>Bank Statement Processing</strong> — Electronic and manual bank statement creation to track and manage statement lines.</div></li>
+        <li><span class="ico">📊</span><div><strong>Cash Management Dashboard</strong> — Interactive dashboard with 5 key infotiles including <strong>Cash Balance</strong> — drill down into daily activities.</div></li>
+        <li><span class="ico">💸</span><div><strong>External Cash Transactions</strong> — Record ad-hoc payments and receipts (e.g. bank fees) not processed through AP or AR.</div></li>
+        <li><span class="ico">🔄</span><div><strong>Intragroup Transfers</strong> — Manage internal fund transfers between entities within the same corporate group.</div></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: AI Agent Studio teaser -->
+    <div class="card" style="margin-bottom:0;border-top:4px solid var(--brand);background:var(--ai-bg);">
+      <div class="card-title"><span class="ico">🤖</span>AI Agent Studio — CM Use Cases</div>
+      <ul class="topic-list">
+        <li><span class="ico">⚡</span><div><strong>Cash Position Query</strong> — AI Agent answers "What is our cash balance across all bank accounts today?" in real time via REST Business Objects.</div></li>
+        <li><span class="ico">📉</span><div><strong>Cash Flow Forecasting</strong> — AI predicts daily cash position using AR receipts schedule + AP payment due dates automatically.</div></li>
+        <li><span class="ico">🔍</span><div><strong>Unreconciled Items Alert</strong> — AI flags bank statement lines unmatched for more than X days and recommends action.</div></li>
+        <li><span class="ico">📋</span><div><strong>Bank Fee Detection</strong> — AI identifies unusual bank charges in External Cash Transactions and raises alerts for treasury review.</div></li>
+        <li><span class="ico">🧠</span><div><strong>RAG-Powered Queries</strong> — Ask "Show me all unreconciled items for HDFC account this month" — agent queries live CM data.</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- AutoReconciliation Flow -->
   <div class="card">
-    <div class="card-title"><span class="ico">🏦</span>Cash Management — AutoReconciliation</div>
+    <div class="card-title"><span class="ico">🏦</span>Cash Management — AutoReconciliation Flow</div>
     <div class="flow">
       <div class="fstep"><div class="fstep-line"><div class="fstep-num" style="background:var(--mod-cm)">1</div><div class="fstep-conn"></div></div><div class="fstep-body"><h4>Create Matching Rules</h4><p>Define rules to match bank statement lines to AP payments and AR receipts automatically</p></div></div>
       <div class="fstep"><div class="fstep-line"><div class="fstep-num" style="background:var(--mod-cm)">2</div><div class="fstep-conn"></div></div><div class="fstep-body"><h4>Create Rule Set → Assign to Bank Account</h4><p>Group matching rules into a set; assign to each bank account</p></div></div>
@@ -1205,7 +1235,76 @@ body {
 
 
 <!-- ╔══════════════════════════════════════╗
-     ║  TAB 9: AI AGENT STUDIO             ║
+     ║  TAB 9: CASH MANAGEMENT             ║
+     ╚══════════════════════════════════════╝ -->
+<div id="p-cm" class="panel">
+  <div class="sec-hdr"><h2>Cash Management (CM)</h2><span class="badge" style="background:var(--mod-cm)">Module 5</span></div>
+
+  <div class="info">
+    <strong>🏦 Oracle Fusion Cash Management</strong> provides real-time visibility into corporate liquidity, enabling efficient bank account management, automated bank statement reconciliation, and accurate cash forecasting. It supports bank statement processing, intragroup transfers, and cash positioning, allowing treasury teams to optimize working capital and manage risk — available within the Oracle Financials Cloud suite.
+  </div>
+
+  <!-- 2 cards side by side -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+
+    <!-- LEFT: Key Components -->
+    <div class="card" style="margin-bottom:0;border-top:4px solid var(--mod-cm);">
+      <div class="card-title"><span class="ico">💰</span>Cash Flow — Key Components & Features</div>
+      <ul class="topic-list">
+        <li><span class="ico">🏦</span><div><strong>Bank Account Reconciliation</strong> — Auto or manual reconciliation of bank statements with system transactions, including bank charges and interest.</div></li>
+        <li><span class="ico">📈</span><div><strong>Cash Positioning & Forecasting</strong> — Daily cash positions across multiple bank accounts; predict future balances and monitor cash flow trends.</div></li>
+        <li><span class="ico">📄</span><div><strong>Bank Statement Processing</strong> — Electronic and manual bank statement creation to track and manage statement lines.</div></li>
+        <li><span class="ico">📊</span><div><strong>Cash Management Dashboard</strong> — Interactive dashboard with 5 key infotiles including <strong>Cash Balance</strong> — drill down into daily activities.</div></li>
+        <li><span class="ico">💸</span><div><strong>External Cash Transactions</strong> — Record ad-hoc payments and receipts (e.g. bank fees) not processed through AP or AR.</div></li>
+        <li><span class="ico">🔄</span><div><strong>Intragroup Transfers</strong> — Manage internal fund transfers between entities within the same corporate group.</div></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: AI Use Cases -->
+    <div class="card" style="margin-bottom:0;border-top:4px solid var(--brand);background:var(--ai-bg);">
+      <div class="card-title"><span class="ico">🤖</span>AI Agent Studio — CM Use Cases</div>
+      <ul class="topic-list">
+        <li><span class="ico">⚡</span><div><strong>Cash Position Query</strong> — AI Agent answers "What is our cash balance across all bank accounts today?" in real time via REST Business Objects.</div></li>
+        <li><span class="ico">📉</span><div><strong>Cash Flow Forecasting</strong> — AI predicts daily cash position using AR receipts schedule + AP payment due dates automatically.</div></li>
+        <li><span class="ico">🔍</span><div><strong>Unreconciled Items Alert</strong> — AI flags bank statement lines unmatched for more than X days and recommends action.</div></li>
+        <li><span class="ico">📋</span><div><strong>Bank Fee Detection</strong> — AI identifies unusual bank charges in External Cash Transactions and raises alerts for treasury review.</div></li>
+        <li><span class="ico">🧠</span><div><strong>RAG-Powered Queries</strong> — Ask "Show me all unreconciled items for HDFC account this month" — agent queries live CM data.</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- AutoReconciliation Flow -->
+  <div class="card">
+    <div class="card-title"><span class="ico">🔁</span>AutoReconciliation — Step by Step</div>
+    <div class="flow">
+      <div class="fstep">
+        <div class="fstep-line"><div class="fstep-num" style="background:var(--mod-cm)">1</div><div class="fstep-conn"></div></div>
+        <div class="fstep-body"><h4>Create Bank Statement Reconciliation Matching Rules</h4><p>Define rules to automatically match bank statement lines to AP payments and AR receipts in Oracle Fusion.</p></div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-line"><div class="fstep-num" style="background:var(--mod-cm)">2</div><div class="fstep-conn"></div></div>
+        <div class="fstep-body"><h4>Create Rule Set → Assign to Bank Account</h4><p>Group all matching rules into a Rule Set; assign the Rule Set to each bank account.</p></div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-line"><div class="fstep-num" style="background:var(--mod-cm)">3</div><div class="fstep-conn"></div></div>
+        <div class="fstep-body"><h4>Run AutoReconciliation</h4><p>System matches bank statement lines to Oracle transactions. Unmatched items flagged for manual review.</p></div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-line"><div class="fstep-num" style="background:var(--mod-cm)">4</div><div class="fstep-conn"></div></div>
+        <div class="fstep-body"><h4>External Cash Transactions — Automatic</h4><p>Create Bank Statement Transaction Creation Rule → Cash Transaction Type Mapping → Assign to Bank Account → Generate External Cash Transactions for bank charges.</p></div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-line"><div class="fstep-num" style="background:var(--mod-cm)">5</div><div class="fstep-conn"></div></div>
+        <div class="fstep-body"><h4>Period Close</h4><p>Reconcile all bank statements → Resolve unreconciled items → Close CM Period → AP payments and AR receipts confirmed.</p><span class="fstep-tag" style="background:rgba(236,72,153,.15);color:var(--mod-cm)">✅ Must complete before GL close</span></div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /cm -->
+
+
+<!-- ╔══════════════════════════════════════╗
      ╚══════════════════════════════════════╝ -->
 <div id="p-ai" class="panel">
   <div class="sec-hdr"><h2>Oracle AI Agent Studio</h2><span class="badge badge-ai">Module 7 — Weeks 6–7</span></div>
@@ -1455,7 +1554,7 @@ function toggleTheme(){
 const tabMap = {
   'overview':'p-overview','architecture':'p-architecture','schedule':'p-schedule',
   'common':'p-common','gl':'p-gl','ap':'p-ap','ar':'p-ar',
-  'fa':'p-fa','ai':'p-ai','checklist':'p-checklist','quiz':'p-quiz','compare':'p-compare'
+  'fa':'p-fa','cm':'p-cm','ai':'p-ai','checklist':'p-checklist','quiz':'p-quiz','compare':'p-compare'
 };
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
